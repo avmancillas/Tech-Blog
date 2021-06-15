@@ -11,12 +11,6 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        comment_text: {
-            type: DataTypes.STRING,
-            validate:{
-                len:[1]
-            }
-        },
         user_id: {
             type: DataTypes.INTEGER,
             references:{
@@ -24,6 +18,12 @@ Comment.init(
                 key: 'id'
             } 
             
+        },
+        comment_text: {
+            type: DataTypes.STRING,
+            validate:{
+                len:[1]
+            }
         },
         post_id: {
             type: DataTypes.INTEGER,

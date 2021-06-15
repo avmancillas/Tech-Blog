@@ -66,15 +66,16 @@ router.get('/:id', async (req,res) => {
     res.status(500).json(err);
   };
 });
-router.post('/', withAuth,(req,res) => {
-    Post.create({
+router.post('/', withAuth, async (req,res) => {
+    try{
+        const postDatadb = awaitPost.create({
         title: req.body.title,
         content:req.body.content,
         user_id: req.session.user_id})
-  .then(postDatadb => res.json(postDatadb))
-  .catch((err) => {
-    res.status(500).json(err);
-  });
+  res.status(500).json(postDatadb)
+  }catch(err) {
+
+  };
 });
 
 module.exports = router
